@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ozaydb?reWriteBatchedInserts=true
+    driver-class-name: org.postgresql.Driver
+    username: ozaydb
+    password: ozaydb
+    hikari:
+      pool-name: OzayDbPostgreHikariPool
+      auto-commit: false
+      maximum-pool-size: 10
+      minimum-idle: 3
+      connectionTimeout: 10000
+      idle-timeout: 60000
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 30
+        generate_statistics: false
+        order_inserts: true #Optimize Batch Inserts of Parent-Child Relationships And Batch Per Transaction
+        order_updates: true #Optimize Batch Updates of Parent-Child Relationships And Batch Per Transaction
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        #if you are using resource-local transactions (which is quite the norm when using Spring framework), you should definitely configure the connection pool (e.g. HikariCP) to disable the auto-commit commit, and provide the connection acquisition delay Hibernate configuration property
+        connection.provider_disables_autocommit: true
+        package_to_scan: com.imozayozturk.accountmanagementsystem.domain
+        use-second-level-cache: false
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        enable_lazy_load_no_trans: true
+  data:
+    jpa:
+      repositories:
+        enabled: true

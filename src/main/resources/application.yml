@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: local
+    include: postgre-config, feign-config
+  application:
+    name: @project.name@
+    description: @project.description@
+
+swagger:
+  host:
+    url: localhost:8080
+    protocol: http
+  contact:
+    name: Account Management Service
+    url: https://account@management.com
+    email: info@accountmanagement.com
+  license:
+    name: Account Management Service
+    url: https://account@management.com/kullanim_kosullari.html
+  version: V1

@@ -1,0 +1,13 @@
+feign:
+  httpclient:
+    max-connections: 200
+    max-connections-per-route: 100
+    connection-timeout: 2000
+  fixer-io:
+    api-key: 0f19d5afa8c59548ff35
+    ##backup api-key: 98e14656ff5c3bdd1bbf
+    url: https://free.currconv.com/api/v7
+
+feign-retry:
+  max-attempts: 3
+  attemp-interval: 3000
